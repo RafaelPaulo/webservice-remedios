@@ -20,16 +20,30 @@ public class Remedio {
 	@Column(name="CD_REMEDIO", nullable=false)
 	private int codigo;
 	
-	@Column(name="NM_REMEDIO")
+	@Column(name="NM_REMEDIO", nullable=false)
 	private String nome;
 		
 	@Column(name="DS_REMEDIO")
 	private String descricao;
 		
 	@Enumerated(EnumType.STRING)
-	@Column(name="NM_TIPO_REMEDIO")
+	@Column(name="NM_TIPO_REMEDIO", nullable=false)
 	private TipoRemedio tipo;
 	
+
+	
+	public Remedio(int codigo, String nome, String descricao, TipoRemedio tipo) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.tipo = tipo;
+	}
+			
+	public Remedio() {
+		super();
+	}
+
 	//Getters and setters
 	public String getNome() {
 		return nome;
