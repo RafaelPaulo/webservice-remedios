@@ -5,6 +5,9 @@ import java.util.GregorianCalendar;
 
 import javax.persistence.EntityManager;
 
+import org.apache.axis2.AxisFault;
+
+import br.com.fiap.bo.PessoaBO;
 import br.com.fiap.dao.MedicacaoDAO;
 import br.com.fiap.dao.PessoaDAO;
 import br.com.fiap.dao.RemedioDAO;
@@ -26,37 +29,35 @@ public class Teste {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		
 		RemedioDAO   remedioDao	  = new RemedioDAOImpl(em);
-		PessoaDAO    pessoaDao 	  = new PessoaDAOImpl(em);
-		MedicacaoDAO medicacaoDao = new MedicacaoDAOImpl(em);
+//		MedicacaoDAO medicacaoDao = new MedicacaoDAOImpl(em);
 		
-		Pessoa 		rafael   = new Pessoa();
+//		Pessoa 		rafael   = new Pessoa();
 		Remedio 	dipirona = new Remedio();
-		Medicacao	medicacao  = new Medicacao();
+//		Medicacao	medicacao  = new Medicacao();
 		
-		rafael.setCpf(45047990818l);
-		rafael.setNome("Rafael Paulo");
-		rafael.setIdade(19);
-		rafael.setSexo(Sexo.MASCULINO);
+			
+		PessoaBO pessoaBo = new PessoaBO();
+		
 		
 		dipirona.setNome("Dipirona");
 		dipirona.setDescricao("Remedio para dores e febre");
 		dipirona.setTipo(TipoRemedio.COMPRIMIDO);
 		
-		Calendar hoje = Calendar.getInstance();
+//		Calendar hoje = Calendar.getInstance();
 		
-		medicacao.setDataInicio(hoje);
-		//medicao.setDataTermino(new GregorianCalendar());
-		medicacao.setDosagem(1);
-		medicacao.setIntervalo(8);
-		medicacao.setPediodo(5);
-		medicacao.setPessoa(rafael);
-		medicacao.setRemedio(dipirona);
+//		medicacao.setDataInicio(hoje);
+//		//medicao.setDataTermino(new GregorianCalendar());
+//		medicacao.setDosagem(1);
+//		medicacao.setIntervalo(8);
+//		medicacao.setPediodo(5);
+//		medicacao.setPessoa(rafael);
+//		medicacao.setRemedio(dipirona);
 		
 		try {
-			pessoaDao.cadastrar(rafael);
+			pessoaBo.createPessoa(45047990818l, "Rafael Paulo", 19, "M");
 			remedioDao.cadastrar(dipirona);
-			medicacaoDao.cadastrar(medicacao);
-		} catch (DBException e) {
+//			medicacaoDao.cadastrar(medicacao);
+		} catch (DBException | AxisFault e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
