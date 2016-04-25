@@ -38,7 +38,7 @@ public class Medicacao {
 	private Calendar dataTermino; //Data término do tratamento
 	
 	@Column(name="QNT_DIAS")
-	private int pediodo;  //Por quantos dias será tomado o medicamento
+	private int periodo;  //Por quantos dias será tomado o medicamento
 	
 	@ManyToOne
 	private Pessoa pessoa;
@@ -49,7 +49,7 @@ public class Medicacao {
 	
 		
 	public Medicacao(int codigo, double dosagem, int intervalo,
-			Calendar dataInicio, Calendar dataTermino, int pediodo,
+			Calendar dataInicio, Calendar dataTermino, int periodo,
 			Pessoa pessoa, Remedio remedio) {
 		super();
 		this.codigo = codigo;
@@ -57,7 +57,7 @@ public class Medicacao {
 		this.intervalo = intervalo;
 		this.dataInicio = dataInicio;
 		this.dataTermino = dataTermino;
-		this.pediodo = pediodo;
+		this.periodo = periodo;
 		this.pessoa = pessoa;
 		this.remedio = remedio;
 	}
@@ -85,11 +85,11 @@ public class Medicacao {
 	public void setDataInicio(Calendar dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	public int getPediodo() {
-		return pediodo;
+	public int getPeriodo() {
+		return periodo;
 	}
-	public void setPediodo(int pediodo) {
-		this.pediodo = pediodo;
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
 	}
 	public Pessoa getPessoa() {
 		return pessoa;

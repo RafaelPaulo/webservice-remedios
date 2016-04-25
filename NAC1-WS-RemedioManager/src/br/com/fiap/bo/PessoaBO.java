@@ -9,6 +9,7 @@ import br.com.fiap.dao.impl.PessoaDAOImpl;
 import br.com.fiap.entity.Pessoa;
 import br.com.fiap.entity.Sexo;
 import br.com.fiap.exception.DBException;
+import br.com.fiap.exception.IdNotFoundException;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
 
 public class PessoaBO {
@@ -42,9 +43,19 @@ public class PessoaBO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+				
+	}
+	
+	public Pessoa readPessoa(long cpf) throws IdNotFoundException, AxisFault{
+		String cpfs = Long.toString(cpf);
 		
-		em.close();
+		if(cpfs.length() < 11 || cpfs.length() > 12){
+			throw new AxisFault("CPF informado inválido");
+		}
 		
+		PessoaDAO dao = new PessoaDAOImpl(em);
+		
+		return dao.pesquisar(cpf);
 	}
 
 }

@@ -59,6 +59,7 @@ public abstract class GenericDAOImpl<T,K> implements GenericDAO<T, K>{
 	public T pesquisar(K chave) throws IdNotFoundException {		
 		Class<T> classe = (Class<T>) ((ParameterizedType)getClass()
 					.getGenericSuperclass()).getActualTypeArguments()[0];
+		System.out.println(chave);
 		T entidade =  em.find(classe, chave);
 		if (entidade != null) 
 			return entidade;
