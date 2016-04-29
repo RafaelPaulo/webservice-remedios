@@ -1,5 +1,7 @@
 package br.com.fiap.bo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.apache.axis2.AxisFault;
@@ -52,6 +54,20 @@ public class RemedioBO {
 		}
 		
 		return rem; 
+	}
+	
+	public List<Remedio> readRemedioPorPessoa(Long cpf) throws AxisFault {
+		RemedioDAO daoRemedio = new RemedioDAOImpl(em);
+		
+		String cpfs = Float.toString(cpf);
+		if (cpfs.length() < 11 || cpfs.length() > 12) {
+			throw new AxisFault("CPF inválido");
+		}
+		
+		List<Remedio> remp = daoRemedio.buscarPorPessoa(cpf);
+		
+
+		return remp;
 	}
 
 }

@@ -72,6 +72,4 @@ public class MedicacaoBO {
 		return medicacao;
 	}
 	
-	
-
 }

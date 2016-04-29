@@ -2,10 +2,12 @@ package teste;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.axis2.AxisFault;
 
-import br.com.fiap.entity.Pessoa;
+import br.com.fiap.bo.RemedioBO;
+import br.com.fiap.entity.Remedio;
 
 public class Teste2 {
 	
@@ -15,14 +17,18 @@ public class Teste2 {
 		String currentTime = new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
 		System.out.println(currentTime);
 		
-		Pessoa p = new Pessoa();
+		RemedioBO bo = new RemedioBO();
+		List<Remedio> r = bo.readRemedioPorPessoa(45047990818l);
 		
-		if(p.getCpf() <= 0){
+		if(r == null){
 			System.out.println("vazio");
 		}else{
-			System.out.println("=:"+p.getCpf());
+			System.out.println("Foi");
 		}
 		
+		for (Remedio remedio : r) {
+			System.out.println(remedio.getNome());
+		}
 	}
 	
 }

@@ -26,16 +26,16 @@ public class Teste {
 		
 		Calendar hoje = Calendar.getInstance();	
 		
-		String currentTime = new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
+//		String currentTime = new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
 			
 		pessoaBo.createPessoa(45047990818l, "Rafael Paulo", 19, "M");
-		remedioBo.createRemedio("Remedio para dores e febre", "Anador", "líquido");
-		medicacaoBo.createMedicacao(hoje,hoje,1, 8, 5, 45047990818l, "Anador");
+		remedioBo.createRemedio("Remedio para dores e febre", "Dipirona", "líquido");
+		medicacaoBo.createMedicacao(hoje,hoje,1, 8, 5, 45047990818l, "Dipirona");
 		
-		System.out.println("BUSCA");
-		ProviderManager pro = new ProviderManager();
-		double a = pro.calcularQuantidadeRemediosNecessario("Anador","45047990818");
-		System.out.println(a);
+//		System.out.println("BUSCA");
+//		ProviderManager pro = new ProviderManager();
+//		double a = pro.calcularQuantidadeRemediosNecessario("Anador","45047990818");
+//		System.out.println(a);
 		
 		em.close();
 	}

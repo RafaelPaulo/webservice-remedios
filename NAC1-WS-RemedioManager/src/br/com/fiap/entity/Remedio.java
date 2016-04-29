@@ -30,8 +30,6 @@ public class Remedio {
 	@Column(name="NM_TIPO_REMEDIO", nullable=false)
 	private TipoRemedio tipo;
 	
-
-	
 	public Remedio(int codigo, String nome, String descricao, TipoRemedio tipo) {
 		super();
 		this.codigo = codigo;
