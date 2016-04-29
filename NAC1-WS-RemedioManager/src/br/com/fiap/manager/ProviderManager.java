@@ -7,6 +7,7 @@ import org.apache.axis2.AxisFault;
 import br.com.fiap.bo.MedicacaoBO;
 import br.com.fiap.bo.PessoaBO;
 import br.com.fiap.bo.RemedioBO;
+import br.com.fiap.entity.Medicacao;
 import br.com.fiap.exception.IdNotFoundException;
 
 public class ProviderManager {
@@ -53,13 +54,18 @@ public class ProviderManager {
 		return "Medicação cadastrada com sucesso";
 	}
 	
-	//Verificar a proxima medicação a ser tomada
-	
 	
 //	Igor
 	
 	//Buscar todos os remedios do usuário
 	
-	//Consultar quantidade de remedios a tomar de acordo com a quantidade de dias
-
+	
+	//Calcular quantidade de remedios a ser tomado de acordo com a quantidade de dias
+	public double calcularQuantidadeRemediosNecessario(String nomeRemedio, String cpf) throws AxisFault, IdNotFoundException{
+		Medicacao m = new MedicacaoBO().readMedicacao(nomeRemedio, cpf);
+		
+		double totalDeRemedios = ( (24/m.getIntervalo()) * m.getDosagem() ) * m.getPeriodo();
+		
+		return totalDeRemedios;
+	}
 }

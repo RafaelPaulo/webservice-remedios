@@ -19,7 +19,7 @@ public class MedicacaoBO {
 	
 	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	
-	public void createMedicacao(Calendar dataInicio, Calendar dataTermino, double dosagem, int intervalo, int periodo, long cpf, String nomeRemedio) throws AxisFault, IdNotFoundException{
+	public void createMedicacao(Calendar dataInicio,Calendar dataTermino, double dosagem, int intervalo, int periodo, long cpf, String nomeRemedio) throws AxisFault, IdNotFoundException{
 		
 		Medicacao 	 medicacao 	= new Medicacao();
 		MedicacaoDAO dao 		= new MedicacaoDAOImpl(em);
@@ -52,6 +52,24 @@ public class MedicacaoBO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Medicacao readMedicacao(String nomeRemedio, String cpf) throws AxisFault{
+		MedicacaoDAO dao 		= new MedicacaoDAOImpl(em);
+		
+		if(cpf.length() < 11 || cpf.length() > 12){
+			throw new AxisFault("CPF informado inválido");
+		}
+		
+		long cpfs = Long.parseLong(cpf);
+				
+		Medicacao medicacao = dao.buscarMedicacaoPorCPFeNomeMedicacao(nomeRemedio, cpfs);
+		
+		if(medicacao.getCodigo() <= 0){
+			throw new AxisFault("Medicação não encontrada");
+		}
+		
+		return medicacao;
 	}
 	
 	

@@ -32,7 +32,7 @@ public class Medicacao {
 	@Temporal(TemporalType.DATE)
 	@Column(name="DT_INICIO", nullable=false)
 	private Calendar dataInicio; //Data de inicio do tratamento
-	
+		
 	@Temporal(TemporalType.DATE)
 	@Column(name="DT_FIM")
 	private Calendar dataTermino; //Data término do tratamento
@@ -49,7 +49,7 @@ public class Medicacao {
 	
 		
 	public Medicacao(int codigo, double dosagem, int intervalo,
-			Calendar dataInicio, Calendar dataTermino, int periodo,
+			Calendar dataInicio,Calendar dataTermino, int periodo,
 			Pessoa pessoa, Remedio remedio) {
 		super();
 		this.codigo = codigo;
@@ -115,6 +115,7 @@ public class Medicacao {
 	public void setDataTermino(Calendar dataTermino) {
 		this.dataTermino = dataTermino;
 	}
+
 	
 	
 	

@@ -46,7 +46,7 @@ public class PessoaBO {
 				
 	}
 	
-	public Pessoa readPessoa(long cpf) throws IdNotFoundException, AxisFault{
+	public Pessoa readPessoa(long cpf) throws AxisFault, IdNotFoundException{
 		String cpfs = Long.toString(cpf);
 		
 		if(cpfs.length() < 11 || cpfs.length() > 12){

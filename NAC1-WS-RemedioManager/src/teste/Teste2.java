@@ -1,24 +1,27 @@
 package teste;
 
-import javax.persistence.EntityManager;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.apache.axis2.AxisFault;
 
-import br.com.fiap.dao.RemedioDAO;
-import br.com.fiap.dao.impl.RemedioDAOImpl;
-import br.com.fiap.entity.Remedio;
-import br.com.fiap.singleton.EntityManagerFactorySingleton;
+import br.com.fiap.entity.Pessoa;
 
 public class Teste2 {
 	
 	public static void main(String[] args) throws AxisFault {
 		
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		RemedioDAO dao = new RemedioDAOImpl(em);
 		
-		Remedio rem = dao.buscarRemedioNome("Dipirona");
+		String currentTime = new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
+		System.out.println(currentTime);
 		
-		System.out.println(rem.getDescricao());
+		Pessoa p = new Pessoa();
+		
+		if(p.getCpf() <= 0){
+			System.out.println("vazio");
+		}else{
+			System.out.println("=:"+p.getCpf());
+		}
 		
 	}
 	
