@@ -66,13 +66,10 @@ public class ProviderManager {
 	}
 	
 	//Buscar todos os remedios do usuário
-	public String buscarRemediosDoUsuario(long cpf) throws AxisFault{
+	public List<Remedio> buscarRemediosDoUsuario(long cpf) throws AxisFault{
 		RemedioBO bo = new RemedioBO();
-		String rem = "";
 		List<Remedio> remedios = bo.readRemedioPorPessoa(cpf);
-		for (Remedio remedio : remedios) {
-			rem += remedio.getNome() + " ";
-		}
-		return rem;
+		
+		return remedios;
 	}
 }
